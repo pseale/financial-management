@@ -35,7 +35,7 @@ public static class MauiProgram
         builder.Services.AddFinanManLocalization();
         builder.Services.AddStateManagement();
         builder.Services.AddClientServices();
-
+        
 
         return builder.Build();
     }

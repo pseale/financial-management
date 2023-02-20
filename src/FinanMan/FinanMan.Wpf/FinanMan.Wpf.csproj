@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net7.0-windows</TargetFramework>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="images\favicon.ico" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Resource Include="images\favicon.ico">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Resource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebView.Wpf" Version="7.0.59" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\FinanMan.BlazorUi\FinanMan.BlazorUi.csproj" />
+		<ProjectReference Include="..\FinanMan.SharedClient\FinanMan.SharedClient.csproj" />
+	</ItemGroup>
+
+</Project>
