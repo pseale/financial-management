@@ -15,10 +15,11 @@
                       CaptionHeight="34"
                       ResizeBorderThickness="8"
                       GlassFrameThickness="8"
+                      UseAeroCaptionButtons="True"
                       NonClientFrameEdges="Bottom,Left,Right"/>
     </WindowChrome.WindowChrome>
 
-    <Border Background="#020305" BorderThickness="1">
+    <Border x:Name="MyWindowBorder" Background="#020305" BorderThickness="1">
         <Grid x:Name="ParentContainer" Background="#020305">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -30,11 +31,19 @@
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Column="0" Orientation="Horizontal" VerticalAlignment="Center">
-                    <Image Source="images/favicon.ico" Width="18" Margin="6 0 4 0" />
-                    <TextBlock Text="App Title" Margin="4 3 0 0" VerticalAlignment="Center" />
+                    <Image Source="images/favicon.ico" Width="18" Margin="6 0 4 0" WindowChrome.IsHitTestVisibleInChrome="True" />
+                    <TextBlock Text="App Title" Margin="4 3 0 0" VerticalAlignment="Center" 
+                               Foreground="White"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
-
+                    <Button x:Name="MinimizeButton"  Style="{StaticResource MinimizeButtonStyle}" Command="{Binding Source={x:Static SystemCommands.MinimizeWindowCommand}}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Minimuze" >
+                    </Button>
+                    <Button x:Name="RestoreButton" Style="{StaticResource RestoreButtonStyle}" Visibility="Collapsed" Command="{Binding Source={x:Static SystemCommands.RestoreWindowCommand}}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Restore" >
+                    </Button>
+                    <Button x:Name="MaximizeButton" Style="{StaticResource MaximizeButtonStyle}" Command="{Binding Source={x:Static SystemCommands.MaximizeWindowCommand}}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Maximize" >
+                    </Button>
+                    <Button x:Name="CloseButton" Style="{StaticResource CloseButtonStyle}" Command="{Binding Source={x:Static SystemCommands.CloseWindowCommand}}" WindowChrome.IsHitTestVisibleInChrome="True" ToolTip="Close" >
+                    </Button>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="1">
@@ -43,7 +52,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <TextBlock Grid.Row="0" Text="Some Text" />
+                    <TextBlock Grid.Row="0" Text="Some Text" Foreground="White" />
                     <blazor:BlazorWebView 
                         Grid.Row="1" 
                         HostPage="wwwroot\index.html" 

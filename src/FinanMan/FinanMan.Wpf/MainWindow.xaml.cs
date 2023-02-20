@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -78,20 +79,18 @@ public partial class MainWindow : Window
     {
         base.OnStateChanged(e);
 
-        //if (!ShowMaximizeButton) { return; }
-
-        //if (WindowState == WindowState.Maximized)
-        //{
-        //    _border.BorderThickness = new Thickness(8);
-        //    _restoreButton.Visibility = Visibility.Visible;
-        //    _maximizeButton.Visibility = Visibility.Collapsed;
-        //}
-        //else
-        //{
-        //    _border.BorderThickness = new Thickness(1);
-        //    _restoreButton.Visibility = Visibility.Collapsed;
-        //    _maximizeButton.Visibility = Visibility.Visible;
-        //}
+        if (WindowState == WindowState.Maximized)
+        {
+            MyWindowBorder.BorderThickness = new Thickness(8);
+            RestoreButton.Visibility = Visibility.Visible;
+            MaximizeButton.Visibility = Visibility.Collapsed;
+        }
+        else
+        {
+            MyWindowBorder.BorderThickness = new Thickness(1);
+            RestoreButton.Visibility = Visibility.Collapsed;
+            MaximizeButton.Visibility = Visibility.Visible;
+        }
     }
     #endregion Title Bar replaced functionality
 }
